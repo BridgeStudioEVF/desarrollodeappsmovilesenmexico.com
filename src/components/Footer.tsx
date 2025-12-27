@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Smartphone, Twitter, Linkedin, Github, Mail } from "lucide-react";
+import { Smartphone, Facebook, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -21,35 +21,35 @@ const Footer = () => {
             </p>
             <div className="mt-6 flex gap-4">
               <a
-                href="#"
+                href="https://www.facebook.com/Bridgestudio.mx"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent"
-                aria-label="Twitter"
+                aria-label="Facebook"
               >
-                <Twitter className="h-5 w-5" />
+                <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/bridgestudiomx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/bridge-studio-mx"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent"
-                aria-label="GitHub"
-              >
-                <Github className="h-5 w-5" />
-              </a>
-              <a
-                href="#"
-                className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted/50 text-muted-foreground transition-colors hover:bg-accent/10 hover:text-accent"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
             </div>
           </div>
+
 
           {/* Quick Links */}
           <div>

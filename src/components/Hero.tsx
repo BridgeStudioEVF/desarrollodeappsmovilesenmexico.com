@@ -1,17 +1,29 @@
-import { Search } from "lucide-react";
+import { Search, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface HeroProps {
   onSearch?: (query: string) => void;
+  searchQuery?: string;
 }
 
-const Hero = ({ onSearch }: HeroProps) => {
-  const [searchQuery, setSearchQuery] = useState("");
+const Hero = ({ onSearch, searchQuery: externalSearchQuery }: HeroProps) => {
+  const [localSearchQuery, setLocalSearchQuery] = useState(externalSearchQuery || "");
+
+  useEffect(() => {
+    if (externalSearchQuery !== undefined) {
+      setLocalSearchQuery(externalSearchQuery);
+    }
+  }, [externalSearchQuery]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    onSearch?.(searchQuery);
+    onSearch?.(localSearchQuery);
+  };
+
+  const handleClear = () => {
+    setLocalSearchQuery("");
+    onSearch?.("");
   };
 
   return (
@@ -50,16 +62,27 @@ const Hero = ({ onSearch }: HeroProps) => {
               <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
               <input
                 type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                value={localSearchQuery}
+                onChange={(e) => setLocalSearchQuery(e.target.value)}
                 placeholder="Buscar artículos sobre desarrollo de apps..."
-                className="h-12 w-full rounded-xl border-0 bg-background/95 pl-12 pr-4 text-foreground shadow-lg backdrop-blur placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent sm:h-14"
+                className="h-12 w-full rounded-xl border-0 bg-background/95 pl-12 pr-12 text-foreground shadow-lg backdrop-blur placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-accent sm:h-14"
               />
+              {localSearchQuery && (
+                <button
+                  type="button"
+                  onClick={handleClear}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground p-1"
+                  aria-label="Clear search"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
             </div>
             <Button type="submit" variant="hero" size="lg" className="h-12 sm:h-14">
               Buscar
             </Button>
           </form>
+
 
           {/* Quick Tags */}
           <div className="animate-fade-up mt-8 flex flex-wrap justify-center gap-2 opacity-0 animation-delay-400">
@@ -68,11 +91,12 @@ const Hero = ({ onSearch }: HeroProps) => {
               <button
                 key={tag}
                 onClick={() => {
-                  setSearchQuery(tag);
+                  setLocalSearchQuery(tag);
                   onSearch?.(tag);
                 }}
                 className="rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-sm text-primary-foreground/80 transition-colors hover:bg-primary-foreground/20"
               >
+
                 {tag}
               </button>
             ))}

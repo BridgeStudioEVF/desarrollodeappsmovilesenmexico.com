@@ -3,6 +3,8 @@ import { Smartphone, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
+
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -34,19 +36,20 @@ const Header = () => {
             <Link
               key={link.name}
               to={link.href}
-              className={`text-sm font-medium transition-colors hover:text-primary ${
-                isActive(link.href) ? "text-primary" : "text-muted-foreground"
-              }`}
+              className={`text-sm font-medium transition-colors hover:text-primary ${isActive(link.href) ? "text-primary" : "text-muted-foreground"
+                }`}
             >
               {link.name}
             </Link>
           ))}
           <Button variant="navCta" size="sm" asChild>
+
             <a href="https://bridgestudio.mx" target="_blank" rel="noopener noreferrer">
               Cotizar App en Bridge Studio
             </a>
           </Button>
         </div>
+
 
         {/* Mobile Menu Button */}
         <button
@@ -67,9 +70,8 @@ const Header = () => {
                 key={link.name}
                 to={link.href}
                 onClick={() => setIsMenuOpen(false)}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
-                  isActive(link.href) ? "text-primary" : "text-muted-foreground"
-                }`}
+                className={`text-sm font-medium transition-colors hover:text-primary ${isActive(link.href) ? "text-primary" : "text-muted-foreground"
+                  }`}
               >
                 {link.name}
               </Link>
