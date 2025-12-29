@@ -12,6 +12,9 @@ import ShareButtons from "@/components/ShareButtons";
 import SEO from "@/components/SEO";
 import ReadingProgress from "@/components/ReadingProgress";
 import { ArticleSection } from "@/types/types";
+import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
+import remarkGfm from 'remark-gfm';
 
 const ArticlePage = () => {
   const { slug } = useParams();
@@ -102,9 +105,38 @@ const ArticlePage = () => {
           {section.heading}
         </HeadingTag>
         {section.content && (
-          <p className="text-muted-foreground leading-relaxed mb-4">
-            {processContent(section.content)}
-          </p>
+          <div className="prose prose-gray max-w-none prose-headings:text-card-foreground prose-h3:text-lg prose-h3:font-semibold prose-h3:mt-6 prose-h3:mb-3 prose-p:text-muted-foreground prose-p:leading-relaxed prose-p:mb-4 prose-ul:text-muted-foreground prose-ol:text-muted-foreground prose-li:mb-2 prose-strong:text-card-foreground prose-strong:font-semibold prose-a:text-primary prose-a:font-bold hover:prose-a:underline">
+            <ReactMarkdown
+              rehypePlugins={[rehypeRaw]}
+              remarkPlugins={[remarkGfm]}
+              components={{
+                p: ({ node, ...props }) => {
+                  const content = props.children;
+                  if (typeof content === 'string') {
+                    const processedContent = processContent(content);
+                    return <p {...props}>{processedContent}</p>;
+                  }
+                  return <p {...props} />;
+                },
+                a: ({ node, ...props }) => {
+                  if (props.href?.includes('bridgestudio.mx')) {
+                    return (
+                      <a
+                        {...props}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-primary font-bold hover:underline"
+                        title="Visitar Bridge Studio - Expertos en Desarrollo de Apps"
+                      />
+                    );
+                  }
+                  return <a {...props} target="_blank" rel="noopener noreferrer" />;
+                },
+              }}
+            >
+              {section.content}
+            </ReactMarkdown>
+          </div>
         )}
         {section.subsections && section.subsections.length > 0 && (
           <div className="ml-4 space-y-6">

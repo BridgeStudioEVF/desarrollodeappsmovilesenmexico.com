@@ -14,7 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Kumbh Sans", "system-ui", "sans-serif"],
+        sans: ["Futura", "Futura PT", "Century Gothic", "system-ui", "sans-serif"],
+        display: ["Futura Extra Bold Condensed", "Futura", "Impact", "Arial Black", "sans-serif"],
+        serif: ["Georgia", "serif"],
       },
       colors: {
         border: "hsl(var(--border))",
