@@ -61,6 +61,9 @@ jobs:
           </IfModule>
           EOF
           
+      # NOTE: This FTP deployment has known issues with Hostinger
+      # It may create nested directories. See DEPLOYMENT-ISSUES.md for details
+      # Manual deployment via FileZilla may be required
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
