@@ -13,11 +13,11 @@ const Footer = () => {
                 <Smartphone className="h-5 w-5 text-primary-foreground" />
               </div>
               <span className="text-lg font-bold text-secondary-foreground">
-                Desarrollo de Apps Móviles
+                Apps Móviles MX
               </span>
             </Link>
             <p className="mt-4 max-w-md text-sm text-muted-foreground">
-              Tu fuente confiable de información sobre desarrollo de apps móviles, programación iOS y Android, y software a la medida en México.
+              Impulsamos la innovación digital en México con contenido especializado sobre desarrollo de aplicaciones móviles, tecnologías emergentes y las mejores prácticas de la industria.
             </p>
             <div className="mt-6 flex gap-4">
               <a
@@ -98,7 +98,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border/50 pt-8 md:flex-row">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Desarrollo de Apps Móviles. Todos los derechos reservados.
+            © {new Date().getFullYear()} Apps Móviles MX. Todos los derechos reservados.
           </p>
           <p className="text-sm text-muted-foreground">
             Un proyecto impulsado por{" "}

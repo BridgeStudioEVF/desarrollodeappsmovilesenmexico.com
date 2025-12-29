@@ -26,7 +26,7 @@ const Header = () => {
             <Smartphone className="h-5 w-5 text-primary-foreground" />
           </div>
           <span className="hidden text-lg font-bold text-foreground sm:inline-block">
-            Desarrollo de Apps Móviles
+            Apps Móviles MX
           </span>
         </Link>
 

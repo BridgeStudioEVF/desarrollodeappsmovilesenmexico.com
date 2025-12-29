@@ -3,7 +3,7 @@ import { Article, BlogPost } from "@/types/types";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
-const SITE_ID = 'desarrolloappsmoviles.com.mx';
+const SITE_ID = 'desarrollodeappsmovilesenmexico.com';
 
 // Helper to format date consistent with UI
 const formatDate = (isoString: string) => {
